@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Ma To-Do List</h1>
+        <p>Ajoutez, cochez, supprimez vos tâches simplement.</p>
+      </header>
+
+      <section class="add-task">
+        <form id="task-form">
+          <input
+            id="task-description"
+            name="description"
+            type="text"
+            placeholder="Nouvelle tâche..."
+            maxlength="255"
+            required
+            autocomplete="off"
+          />
+          <button type="submit">Ajouter</button>
+        </form>
+        <p class="hint">Appuyez sur Entrée pour ajouter rapidement.</p>
+        <p id="feedback" class="feedback" aria-live="polite"></p>
+      </section>
+
+      <section class="tasks">
+        <div class="tasks-header">
+          <h2>Mes tâches</h2>
+          <button id="refresh-btn" class="ghost">Rafraîchir</button>
+        </div>
+        <ul id="tasks-list" aria-live="polite"></ul>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
+
