@@ -1,0 +1,13 @@
+{
+  "name": "todo-frontend",
+  "version": "1.0.0",
+  "description": "Frontend (standalone) for Todo App",
+  "scripts": {
+    "start": "npx serve ./frontend",
+    "dev": "npx serve ./frontend"
+  },
+  "devDependencies": {
+    "serve": "^14.2.0"
+  }
+}
+

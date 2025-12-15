@@ -1,4 +1,4 @@
-const API_BASE = "/api/tasks";
+const API_BASE = "http://localhost:3000/api/tasks";
 
 const form = document.getElementById("task-form");
 const input = document.getElementById("task-description");
