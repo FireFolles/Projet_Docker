@@ -1,0 +1,25 @@
+version: '3.8'
+
+# Override de développement local
+# - Monte les sources (Back/Front) pour hot-reload si vos outils le permettent.
+# - Force le target "dev" (si vous utilisez un autre target, ajustez).
+
+services:
+  backend:
+    build:
+      target: dev
+    volumes:
+      - ./Back:/app
+    environment:
+      - NODE_ENV=development
+    command: ["npm", "run", "dev"]
+
+  frontend:
+    build:
+      target: dev
+    volumes:
+      - ./Front:/app
+    environment:
+      - NODE_ENV=development
+    command: ["npm", "run", "dev"]
+

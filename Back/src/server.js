@@ -23,6 +23,11 @@ try {
 app.use("/api/tasks", buildTasksRouter(supabase));
 // Le backend sert uniquement l'API, il ne gère plus de fichiers statiques pour le front.
 
+// Endpoint simple pour vérifier la santé du service (utilisé par les healthchecks Docker)
+app.get("/health", (_req, res) => {
+  res.status(200).json({ status: "ok" });
+});
+
 app.use((err, _req, res, _next) => {
   console.error("STACK:", err && (err.stack || err));
   res.status(500).json({ error: "Erreur interne du serveur." });

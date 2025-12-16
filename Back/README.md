@@ -28,3 +28,4 @@ SUPABASE_URL=... (URL de ton instance supabase)
 SUPABASE_ANON_KEY=... (clé anon ou service role)
 ```
 
+

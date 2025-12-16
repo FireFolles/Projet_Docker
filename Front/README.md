@@ -21,3 +21,4 @@ Cela ouvre l'app sur http://localhost:3000 (backend) et http://localhost:5000 (f
 - Les appels API sont faits sur `http://localhost:3000/api/tasks`.
 - Pas besoin d'adapter côté front si ce backend reste accessible sur ce port et cette adresse.
 
+

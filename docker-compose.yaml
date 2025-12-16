@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=todo
+      - POSTGRES_USER=todo
+      - POSTGRES_PASSWORD_FILE=/run/secrets/db_password
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - back_net
+    secrets:
+      - db_password
+
+  backend:
+    build:
+      context: ./Back
+      dockerfile: Dockerfile
+      target: dev # ou 'prod' selon le contexte
+    environment:
+      - DATABASE_URL=postgresql://todo@db:5432/todo
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - front_net
+      - back_net
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+
+  frontend:
+    build:
+      context: ./Front
+      dockerfile: Dockerfile
+      target: dev
+    environment:
+      - VITE_BACKEND_URL=http://backend:3000/api
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - front_net
+
+volumes:
+  db_data:
+
+networks:
+  front_net:
+    driver: bridge
+  back_net:
+    driver: bridge
+
+secrets:
+  db_password:
+    file: ./secrets/db_password.txt
+
