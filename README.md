@@ -148,9 +148,9 @@ Même principe pour le frontend avec `Front/Dockerfile`.
   - `ghcr.io/<user>/todo-backend:1.0.0`
   - `ghcr.io/<user>/todo-frontend:1.0.0`
   - Tags complémentaires : `latest`, `1.0`, etc.
-- Documentez dans votre rapport/README GitHub comment vous :
-  - incrémentez les versions (SemVer simple : MAJOR.MINOR.PATCH),
-  - publiez les images (commande `docker buildx build --push` ci-dessus).
+- Les images sont disponible sur Dockerhub
+  - img1 : firefolles/projet-docker-frontend
+  - img2 : firefolles/projet-docker-backend
 
 ---
 
